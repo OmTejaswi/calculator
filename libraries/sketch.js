@@ -13,30 +13,30 @@ var preresult;
 
 function setup() {
     createCanvas(windowWidth,windowHeight)
-    inputBox = createInput("").position(475,80-50).style("width","380px").style("height","50px")
+    inputBox = createInput("").position(width/2.8,80-50).style("width","380px").style("height","50px")
     .style("font-size","30px");
 
-    btn1 = createButton("1").position(505,470-50).style("width: 50px").style("height","50px")
-    btn2 = createButton("2").position(600-20,470-50).style("width: 50px").style("height","50px")
-    btn3 = createButton("3").position(695-35,470-50).style("width: 50px").style("height","50px")
-    btn7 = createButton("7").position(505,270-50).style("width: 50px").style("height","50px")
-    btn8 = createButton("8").position(600-20,270-50).style("width: 50px").style("height","50px")
-    btn9 = createButton("9").position(695-35,270-50).style("width: 50px").style("height","50px")
-    btn4 = createButton("4").position(505,370-50).style("width: 50px").style("height","50px")
-    btn5 = createButton("5").position(600-20,370-50).style("width: 50px").style("height","50px")
-    btn6 = createButton("6").position(695-35,370-50).style("width: 50px").style("height","50px")
-    btn0 = createButton("0").position(600-20,370-50+200).style("width: 50px").style("height","50px")
-    btnDot = createButton(".").position(695-35,370-50+200).style("width: 50px").style("height","50px")
+    btn1 = createButton("1").position(width/2.53,height/1.45).style("width: 50px").style("height","50px")
+    btn2 = createButton("2").position(btn1.x+70,btn1.y).style("width: 50px").style("height","50px")
+    btn3 = createButton("3").position(btn2.x+70,btn1.y).style("width: 50px").style("height","50px")
+    btn4 = createButton("4").position(btn1.x,btn1.y-100).style("width: 50px").style("height","50px")
+    btn5 = createButton("5").position(btn1.x+70,btn4.y).style("width: 50px").style("height","50px")
+    btn6 = createButton("6").position(btn2.x+70,btn4.y).style("width: 50px").style("height","50px")
+    btn7 = createButton("7").position(btn1.x,btn4.y-100).style("width: 50px").style("height","50px")
+    btn8 = createButton("8").position(btn1.x+70,btn7.y).style("width: 50px").style("height","50px")
+    btn9 = createButton("9").position(btn2.x+70,btn7.y).style("width: 50px").style("height","50px")
+    btn0 = createButton("0").position(btn1.x+70,btn1.y+100).style("width: 50px").style("height","50px")
+    btnDot = createButton(".").position(btn2.x+70,btn0.y).style("width: 50px").style("height","50px")
 
-    btnPlus = createButton("+").position(795-60,470-50).style("width: 50px").style("height","50px")
-    btnMinus = createButton("-").position(795-60,370-50).style("width: 50px").style("height","50px")
-    btnDivide = createButton("÷").position(795-60,180-50).style("width: 50px").style("height","50px")
-    btnMultiply = createButton("×").position(795-60,270-50).style("width: 50px").style("height","50px")
-    btnEqualto = createButton("=").position(795-60,570-50).style("width: 50px").style("height","50px")
-    btnPercentage = createButton("%").position(695-35,180-50).style("width: 50px").style("height","50px")
+    btnPlus = createButton("+").position(btn3.x+70,btn1.y).style("width: 50px").style("height","50px")
+    btnMinus = createButton("-").position(btn3.x+70,btn4.y).style("width: 50px").style("height","50px")
+    btnDivide = createButton("÷").position(btn3.x+70,180-50).style("width: 50px").style("height","50px")
+    btnMultiply = createButton("×").position(btn3.x+70,btn7.y).style("width: 50px").style("height","50px")
+    btnEqualto = createButton("=").position(btn3.x+70,btn0.y).style("width: 50px").style("height","50px")
+    btnPercentage = createButton("%").position(btn2.x+70,btnDivide.y).style("width: 50px").style("height","50px")
 
-    btnClear = createButton("C").position(505,180-50).style("width: 50px").style("height","50px")
-    btnBackspace = createButton("⌫").position(600-20,180-50).style("width: 50px").style("height","50px")
+    btnClear = createButton("C").position(btn1.x,btnDivide.y).style("width: 50px").style("height","50px")
+    btnBackspace = createButton("⌫").position(btn1.x+70,btnDivide.y).style("width: 50px").style("height","50px")
 
     result = createElement("h1").position(880,70-50).style("color","#404040");
     preresult = createElement("h3").position(650,70).style("color","grey")
@@ -90,9 +90,9 @@ function draw() {
         window.location.reload();
     }
 
-    document.onkeydown = function (e) {
-        return false;
-    }
+    // document.onkeydown = function (e) {
+    //     return false;
+    // }
 }
 
 function btnColor() {
