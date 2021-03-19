@@ -38,8 +38,8 @@ function setup() {
     btnClear = createButton("C").position(btn1.x,btnDivide.y).style("width: 50px").style("height","50px")
     btnBackspace = createButton("⌫").position(btn1.x+70,btnDivide.y).style("width: 50px").style("height","50px")
 
-    result = createElement("h1").position(880,70-50).style("color","#404040");
-    preresult = createElement("h3").position(650,70).style("color","grey")
+    result = createElement("h1").position(inputBox.x+400,inputBox.y-10).style("color","#404040");
+    preresult = createElement("h3").position(inputBox.x+190,inputBox.y+40).style("color","grey")
 
     btns = [btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnPlus,btnMinus,btnMultiply,btnDivide,btnEqualto,
     btnClear,btnBackspace];
