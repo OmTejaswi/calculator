@@ -13,10 +13,10 @@ var preresult;
 
 function setup() {
     createCanvas(windowWidth,windowHeight)
-    inputBox = createInput("").position(width/2.8,80-50).style("width","380px").style("height","50px")
+    inputBox = createInput("").position(width/2.8,height/20).style("width","380px").style("height","50px")
     .style("font-size","30px");
 
-    btn1 = createButton("1").position(width/2.53,height/1.45).style("width: 50px").style("height","50px")
+    btn1 = createButton("1").position(width/2.53,inputBox.y+400).style("width: 50px").style("height","50px")
     btn2 = createButton("2").position(btn1.x+70,btn1.y).style("width: 50px").style("height","50px")
     btn3 = createButton("3").position(btn2.x+70,btn1.y).style("width: 50px").style("height","50px")
     btn4 = createButton("4").position(btn1.x,btn1.y-100).style("width: 50px").style("height","50px")
