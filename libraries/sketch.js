@@ -30,7 +30,7 @@ function setup() {
 
     btnPlus = createButton("+").position(btn3.x+70,btn1.y).style("width: 50px").style("height","50px")
     btnMinus = createButton("-").position(btn3.x+70,btn4.y).style("width: 50px").style("height","50px")
-    btnDivide = createButton("÷").position(btn3.x+70,180-50).style("width: 50px").style("height","50px")
+    btnDivide = createButton("÷").position(btn3.x+70,btn7.y-100).style("width: 50px").style("height","50px")
     btnMultiply = createButton("×").position(btn3.x+70,btn7.y).style("width: 50px").style("height","50px")
     btnEqualto = createButton("=").position(btn3.x+70,btn0.y).style("width: 50px").style("height","50px")
     btnPercentage = createButton("%").position(btn2.x+70,btnDivide.y).style("width: 50px").style("height","50px")
