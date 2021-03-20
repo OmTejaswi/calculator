@@ -10,6 +10,7 @@ var sbtns = [];
 var result;
 var input = "";
 var preresult;
+var btnB1, btnB2;
 
 function setup() {
     createCanvas(windowWidth,windowHeight)
@@ -38,19 +39,22 @@ function setup() {
     btnClear = createButton("C").position(btn1.x,btnDivide.y).style("width: 50px").style("height","50px")
     btnBackspace = createButton("⌫").position(btn1.x+70,btnDivide.y).style("width: 50px").style("height","50px")
 
+    btnB1 = createButton("(").position(btn0.x-140,btn0.y).style("width: 50px").style("height","50px")
+    btnB2 = createButton(")").position(btn0.x-70,btn0.y).style("width: 50px").style("height","50px")
+
     result = createElement("h1").position(inputBox.x+400,inputBox.y-10).style("color","#404040");
     preresult = createElement("h3").position(inputBox.x+190,inputBox.y+40).style("color","grey")
 
     btns = [btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnPlus,btnMinus,btnMultiply,btnDivide,btnEqualto,
     btnClear,btnBackspace];
-    sbtns = [btnPlus,btnMinus,btnMultiply,btnDivide,btnEqualto,btnPercentage,btnBackspace,btnClear];
+    sbtns = [btnPlus,btnMinus,btnMultiply,btnDivide,btnDot,btnB1,btnB2,btnPercentage,btnBackspace,btnClear];
 
     btnEqualto.style("color: white").style("fontSize: 22px").style("backgroundColor: orange")
     for(var i = 0; i < sbtns.length-4; i++) {
         sbtns[i].style("color: orange")
         sbtns[i].style("fontSize: 25px")
     }
-    for(var i = 5; i < sbtns.length; i++) {
+    for(var i = 4; i < sbtns.length; i++) {
         sbtns[i].style("color: orange")
         sbtns[i].style("fontSize: 18px")
     }
@@ -218,6 +222,18 @@ function btnColor() {
     btnDot.mouseOut(function(){
         btnDot.style("backgroundColor","#EFEFEF")
     })
+    btnB1.mouseOver(function(){
+        btnB1.style("backgroundColor","#E8E8E8")
+    });
+    btnB1.mouseOut(function(){
+        btnB1.style("backgroundColor","#EFEFEF")
+    })
+    btnB2.mouseOver(function(){
+        btnB2.style("backgroundColor","#E8E8E8")
+    });
+    btnB2.mouseOut(function(){
+        btnB2.style("backgroundColor","#EFEFEF")
+    })
 }
 
 function btnPressed(){
@@ -284,7 +300,9 @@ function btnPressed(){
            if(input.charAt(input.length-1) !== "+" ||
                 input.charAt(input.length-1) !== "-" || 
                 input.charAt(input.length-1) !== "*" ||
-                input.charAt(input.length-1) !== "/") 
+                input.charAt(input.length-1) !== "/" ||
+                input.charAt(input.length-1) !== "(" ||
+                input.charAt(input.length-1) !== ")") 
         {
             prevalue = eval(input)
         }
@@ -314,6 +332,7 @@ function btnPressed(){
             btnClear.mousePressed(function(){
                 inputBox.value("");
                 input = ""
+                prevalue = eval(input)
             })
             btnDivide.mousePressed(function(){
                 inputBox.value(inputBox.value()+"÷");
@@ -323,7 +342,16 @@ function btnPressed(){
                 inputBox.value(inputBox.value()+ "×")
                 input += "*"
             })
+            btnB2.mousePressed(function(){
+                inputBox.value(inputBox.value()+")")
+                input += ")"
+                prevalue = eval(input)
+            })
         }
+        btnB1.mousePressed(function(){
+            inputBox.value(inputBox.value()+"(")
+            input += "("
+        })
     btnEqualto.mousePressed(function(){
         val= input;
         if(val !== "") {
@@ -336,13 +364,40 @@ function btnPressed(){
 
 function opretor(){
     var value = inputBox.value().length-1;
+
+    if(inputBox.value().charAt(value) === "(" ||
+    inputBox.value().charAt(value) === ")") {
+        btnB1.mousePressed(function(){
+            
+           input = input.substring(0,input.length-1);
+           inputBox.value(inputBox.value().substring(0,inputBox.value().length-1))
+
+            inputBox.value(inputBox.value()+ "(")
+            input += "("
+
+            prevalue = eval(input)
+        })
+        btnB2.mousePressed(function(){
+            
+            input = input.substring(0,input.length-1);
+            inputBox.value(inputBox.value().substring(0,inputBox.value().length-1))
+ 
+             inputBox.value(inputBox.value()+ ")")
+             input += ")"
+ 
+             prevalue = eval(input)
+         })
+    }
+
+
+
     if(inputBox.value().charAt(value) === "+" ||
     inputBox.value().charAt(value) === "-" ||
     inputBox.value().charAt(value) === "×" ||
     inputBox.value().charAt(value) === "÷"  ||
     inputBox.value().charAt(value) === "%"||
     inputBox.value().charAt(value) === "." ||
-    inputBox.value().charAt(value) === "0") {
+    inputBox.value().charAt(0) === "0" ) {
         
         btnPercentage.mousePressed(function(){
             if(input.charAt(input.length-1) === "*" &&
@@ -472,19 +527,9 @@ function opretor(){
             prevalue = eval(input)
         })
         btn0.mousePressed(function(){
-            if(input.charAt(input.length-1) === "*" &&
-            input.charAt(input.length-2) === "0" && 
-            input.charAt(input.length-3) === "0" &&
-            input.charAt(input.length-4) === "1" &&
-            input.charAt(input.length-5) === "/") {
-                    input = input.substring(0, input.length - 1)
-                    input = input.substring(0, input.length - 1)
-                    input = input.substring(0, input.length - 1)
-                    input = input.substring(0, input.length - 1)
-                    input = input.substring(0, input.length - 1)
-           } else {
-               input = input.substring(0,input.length-1);
-           }
+            if(input.charAt(0) === "0") {
+                input = input.substring(0,input.length-1);
+            }
            inputBox.value(inputBox.value().substring(0,inputBox.value().length-1))
 
             inputBox.value(inputBox.value()+ "0")
