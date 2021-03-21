@@ -15,7 +15,7 @@ var btnB1, btnB2;
 function setup() {
     createCanvas(windowWidth,windowHeight)
     inputBox = createInput("").position(width/2.8,height/20).style("width","380px").style("height","50px")
-    .style("font-size","30px");
+    .style("font-size","30px").attribute('readonly', 'readonly');
 
     btn1 = createButton("1").position(width/2.53,inputBox.y+400).style("width: 50px").style("height","50px")
     btn2 = createButton("2").position(btn1.x+70,btn1.y).style("width: 50px").style("height","50px")
@@ -94,9 +94,9 @@ function draw() {
         window.location.reload();
     }
 
-    // document.onkeydown = function (e) {
-    //     return false;
-    // }
+    document.onkeydown = function (e) {
+        return false;
+    }
 }
 
 function btnColor() {
